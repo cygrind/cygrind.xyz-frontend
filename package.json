@@ -7,13 +7,17 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@nuxtjs/color-mode": "^3.0.3",
+    "@nuxtjs/tailwindcss": "^5.0.4",
     "autoprefixer": "^10.4.7",
     "nuxt": "3.0.0-rc.3",
     "postcss": "^8.4.13",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.0.24",
+    "ufo": "^0.8.4"
   },
   "dependencies": {
-    "@nuxtjs/color-mode": "^3.0.3",
-    "@nuxtjs/tailwindcss": "^5.0.4"
+    "@headlessui/vue": "^1.6.1",
+    "@nuxt-hero-icons/outline": "^1.0.1",
+    "@nuxt-hero-icons/solid": "^1.0.1"
   }
 }
