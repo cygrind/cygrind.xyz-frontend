@@ -17,21 +17,13 @@
           </div>
         </button>
 
-        <button class="mode-toggle rounded-r-md border-l-0 border p-2" ref="mode-toggle" @click="emit('toggleSidebar')">
+        <button class="mode-toggle rounded-r-md border-l-0 border p-2" ref="mode-toggle" @click="toggleSidebar()">
           <solid-menu-icon class="w-6 h-6" />
         </button>
       </div>
 
-      <!-- <button
-        class="btn-rounded px-2 py-2 ml-4 bg-blue-500 hover:bg-blue-400 drop-shadow-md focus:z-10 focus:ring-2 rounded-md">
-        Login <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline dark:fill-white" viewBox="0 0 448 512">
-          <path
-            d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z" />
-        </svg>
-      </button> -->
-
       <Menu>
-        <span>
+        <span class="z-10">
           <MenuButton>
             <button
               class="px-2 py-2 ml-4 bg-blue-500 hover:bg-blue-400 drop-shadow-md focus:z-10 focus:ring-2 rounded-md">
@@ -82,17 +74,26 @@
 }
 
 .mode-toggle {
-  @apply bg-white dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-800 drop-shadow-md dark:border-zinc-500 hover:shadow-inner focus:z-10 focus:ring-2
+  @apply bg-white dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-800 drop-shadow-md dark:border-zinc-500 hover:shadow-inner focus:z-10 focus:ring-2 z-10;
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 
-const emit = defineEmits(['toggleSidebar']);
+const props = defineProps<{
+  sidebarCollapsed: boolean
+}>();
+
+const emit = defineEmits<{(event: 'toggle-sidebar'): void}>();
 
 const toggleDarkMode = () => {
   const colorMode = useColorMode();
   colorMode.preference = colorMode.value === 'light' ? 'dark' : 'light';
+}
+
+const toggleSidebar = () => {
+  console.log(props.sidebarCollapsed);
+  emit('toggle-sidebar');
 }
 </script>

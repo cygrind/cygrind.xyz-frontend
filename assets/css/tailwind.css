@@ -7,6 +7,5 @@ body, html {
 }
 
 html,body, #__nuxt, #__layout{
-  height:100%;
-  width: 100%;
+  @apply w-screen h-screen overflow-hidden;
 }
