@@ -1,6 +1,6 @@
 <template>
   <div @toggle-sidebar="toggleSidebar"
-    class="relative flex flex-col bg-white dark:bg-zinc-800 dark:text-white max-h-full overflow-hidden">
+    class="relative flex flex-col bg-white dark:bg-zinc-800 dark:text-white h-full max-h-full overflow-hidden">
     <CoreHeader @toggle-sidebar="toggleSidebar" />
     <div class="flex w-full h-full max-h-full overflow-hidden">
       <CoreSidebar :sidebar-collapsed="sidebarCollapsed" />
