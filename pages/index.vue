@@ -1,6 +1,92 @@
 <template>
   <div class="flex w-full">
-    <div class="flex flex-col p-4">
+    <div class="flex flex-col flex-grow p-4">
+      <h1 class="text-5xl text-center p-2">ULTRAKILL mods and cyber grind patterns</h1>
+      <hr>
+      <form @submit.prevent="search($event)" class="my-4 flex focus:ring-0">
+        <input type="text" placeholder="Search for patterns and mods..."
+          class="p-4 flex-grow shadow-lg focus:shadow-inner focus:dark:bg-zinc-800 dark:bg-zinc-900 dark:border-zinc-500 rounded-l-md border-l border-y placeholder:text-2xl text-2xl">
+        <button type="submit"
+          class="p-2 px-8 shadow-lg rounded-r-md border-r border-y dark:border-zinc-500 bg-green-500 hover:bg-green-400 hover:shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-white" viewBox="0 0 512 512">
+            <path
+              d="M416 208C416 253.9 401.1 296.3 375.1 330.7L502.6 457.4C515.1 469.9 515.1 490.1 502.6 502.6C490.1 515.1 469.9 515.1 457.4 502.6L330.7 375.1C296.3 401.1 253.9 416 208 416C93.12 416 0 322.9 0 208C0 93.12 93.12 0 208 0C322.9 0 416 93.12 416 208zM240.1 119C231.6 109.7 216.4 109.7 207 119C197.7 128.4 197.7 143.6 207 152.1L238.1 184H120C106.7 184 96 194.7 96 208C96 221.3 106.7 232 120 232H238.1L207 263C197.7 272.4 197.7 287.6 207 296.1C216.4 306.3 231.6 306.3 240.1 296.1L312.1 224.1C322.3 215.6 322.3 200.4 312.1 191L240.1 119z" />
+          </svg>
+        </button>
+      </form>
+
+      <TabGroup>
+        <span class="p-2 w-1/2 rounded border dark:border-zinc-500 dark:bg-zinc-900 shadow-lg">
+          <TabList class="flex justify-evenly">
+            <Tab v-slot="{ selected }" as="template"><button class="tab"
+                :class="[selected ? 'tab-selected' : '']">Patterns</button>
+            </Tab>
+            <Tab v-slot="{ selected }" as="template"><button class="tab"
+                :class="[selected ? 'tab-selected' : '']">Mods</button>
+            </Tab>
+          </TabList>
+        </span>
+
+        <TabPanels>
+          <TabPanel>
+            <div class="flex flex-col my-4 p-2 dark:bg-zinc-900 dark:border-zinc-500 border rounded shadow-lg">
+              <Disclosure v-slot="{ open }">
+                <DisclosureButton class="disclosure" :class="open ? 'disclosure-open' : ''">Featured patterns
+                </DisclosureButton>
+                <DisclosurePanel class="grid auto-rows-auto grid-cols-4 grid-flow-row p-4 gap-4">
+                  <CoreCard
+                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                    image-alt="Image goes here" title="Uwu!"
+                    description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
+                    uploaded="1653051266590" author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                </DisclosurePanel>
+              </Disclosure>
+
+              <Disclosure v-slot="{ open }">
+                <DisclosureButton class="my-2 disclosure" :class="open ? 'disclosure-open' : ''">Popular patterns
+                </DisclosureButton>
+                <DisclosurePanel class="grid auto-rows-auto grid-cols-4 grid-flow-row p-4 gap-4">
+                  <CoreCard
+                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                    image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
+                    author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                </DisclosurePanel>
+              </Disclosure>
+
+              <Disclosure v-slot="{ open }">
+                <DisclosureButton class="p-2 disclosure" :class="open ? 'disclosure-open' : ''">Recent patterns
+                </DisclosureButton>
+                <DisclosurePanel class="grid auto-rows-auto grid-cols-4 grid-flow-row p-4 gap-4">
+                  <CoreCard
+                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                    image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
+                    author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                </DisclosurePanel>
+              </Disclosure>
+            </div>
+          </TabPanel>
+          <TabPanel>Mods content</TabPanel>
+        </TabPanels>
+      </TabGroup>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { TabGroup, TabList, Tab, TabPanels, TabPanel, Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { CoreCard } from '#components';
+
+const { $api } = useNuxtApp();
+
+const search = async (event: Event) => {
+  // @ts-ignore
+  const query: string = event.target.elements[0].value;
+  if (!query.length) {
+    // alert that there's no query
+    return;
+  }
+  // const { data } = await $api('/search?q=' + query);
+
+  // console.log(data);
+}
+</script>

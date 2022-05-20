@@ -11,3 +11,7 @@ body, html {
 html,body, #__nuxt, #__layout{
   @apply w-screen h-screen overflow-hidden;
 }
+
+hr {
+  @apply border-t-2 dark:border-t-zinc-700;
+}

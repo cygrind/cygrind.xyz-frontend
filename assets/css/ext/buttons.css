@@ -1,3 +1,19 @@
 .mode-toggle {
-  @apply bg-white dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-800 drop-shadow-md dark:border-zinc-500 hover:shadow-inner focus:z-10 focus:ring-2 z-10;
+  @apply bg-white dark:bg-zinc-900 hover:bg-zinc-100 hover:dark:bg-zinc-800 shadow-md dark:border-zinc-500 hover:shadow-inner focus:z-10 focus:ring-2 z-10;
+}
+
+.tab {
+  @apply p-2 w-1/2 dark:border-zinc-500 text-center text-xl focus:ring-0 rounded;
+}
+
+.tab-selected {
+  @apply dark:bg-zinc-800 bg-zinc-100 shadow border pointer-events-none;
+}
+
+.disclosure {
+  @apply p-2 text-left text-xl dark:border-zinc-500 hover:dark:bg-zinc-800 hover:bg-zinc-100 border rounded shadow;
+}
+
+.disclosure-open {
+  @apply bg-zinc-100 dark:bg-zinc-800;
 }

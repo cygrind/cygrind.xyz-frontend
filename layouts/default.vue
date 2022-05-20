@@ -16,7 +16,21 @@
 <script setup lang="ts">
 const sidebarCollapsed = ref(false);
 
+onMounted(() => {
+  if (localStorage !== undefined) {
+    sidebarCollapsed.value = localStorage.getItem('sidebarCollapsed') !== null;
+  }
+});
+
 const toggleSidebar = () => {
   sidebarCollapsed.value = !sidebarCollapsed.value;
+
+  if (localStorage !== undefined) {
+    if (sidebarCollapsed.value) {
+      localStorage.setItem('sidebarCollapsed', '');
+    } else {
+      localStorage.removeItem('sidebarCollapsed');
+    }
+  }
 }
 </script>
