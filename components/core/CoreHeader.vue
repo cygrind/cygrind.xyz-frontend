@@ -25,10 +25,10 @@
       <div v-if="loggedIn()"></div>
       <div v-else>
         <Menu>
-          <span class="z-10">
+          <span>
             <MenuButton>
               <button
-                class="px-2 py-2 ml-4 text-white bg-blue-500 hover:bg-blue-400 shadow-md z-50 focus:ring-2 rounded-md">
+                class="px-2 py-2 ml-4 text-white bg-blue-500 hover:bg-blue-400 shadow-md focus:ring-2 rounded-md">
                 Login
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline fill-white" viewBox="0 0 448 512">
                   <path
@@ -36,7 +36,7 @@
                 </svg>
               </button>
             </MenuButton>
-            <MenuItems class="relative">
+            <MenuItems class="relative z-10">
               <span
                 class="absolute left-1/2 -translate-x-1/2 flex flex-col m-2 p-2 gap-2 rounded-md shadow border bg-white dark:border-zinc-500 dark:bg-zinc-900">
                 <MenuItem>

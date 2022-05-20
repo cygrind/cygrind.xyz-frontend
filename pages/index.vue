@@ -38,7 +38,7 @@
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                    uploaded="1653051266590" author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                    uploaded="1653051266590" author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" verified featured />
                 </DisclosurePanel>
               </Disclosure>
 
