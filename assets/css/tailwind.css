@@ -2,7 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './ext/buttons.css';
+@import './ext/ext.css';
 
 body, html {
   font-family: 'Ubuntu Mono', monospace;

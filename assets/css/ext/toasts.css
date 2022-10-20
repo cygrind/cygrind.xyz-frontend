@@ -1,0 +1,7 @@
+.Vue-Toastification__toast.Vue-Toastification__toast--error.top-right {
+    @apply bg-red-500;
+}
+
+.Vue-Toastification__toast.Vue-Toastification__toast--success.top-right {
+    @apply bg-green-500;
+}
