@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full">
-    <div class="flex flex-col flex-grow p-4">
+  <div class="flex w-full max-w-full">
+    <div class="flex flex-col flex-grow p-4 max-w-full">
       <h1 class="text-5xl text-center p-2">ULTRAKILL mods and cyber grind patterns</h1>
       <hr>
       <form @submit.prevent="search($event);" class="my-4 flex focus:ring-0">
@@ -28,63 +28,73 @@
         </span>
 
         <TabPanels>
-          <TabPanel>
-            <div class="flex flex-col my-4 p-2 dark:bg-zinc-900 dark:border-zinc-500 border rounded shadow-lg">
-              <h1 class="mb-2 p-2 dark:bg-zinc-900 dark:border-zinc-500 border rounded shadow-lg text-3xl text-center">
-                Featured patterns
-              </h1>
-              <div class="flex flex-row card-grid">
-                <CoreCard image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
-                  image-alt="Image goes here" title="Uwu!"
-                  description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                  uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern" id=""
-                  verified featured />
-                  <CoreCard image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
-                  image-alt="Image goes here" title="Uwu!"
-                  description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                  uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern" id=""
-                  verified featured />
-                  <CoreCard image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
-                  image-alt="Image goes here" title="Uwu!"
-                  description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                  uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern" id=""
-                  verified featured />
-                  <CoreCard image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
-                  image-alt="Image goes here" title="Uwu!"
-                  description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                  uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern" id=""
-                  verified featured />
-                  <CoreCard image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
-                  image-alt="Image goes here" title="Uwu!"
-                  description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                  uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern" id=""
-                  verified featured />
-              </div>
-              <hr class="mt-4 mb-2">
-              <Disclosure v-slot="{ open }">
-                <DisclosureButton class="my-2 disclosure" :class="open ? 'disclosure-open' : ''">Popular patterns
-                </DisclosureButton>
-                <DisclosurePanel class="mb-2 card-grid">
+          <div>
+            <TabPanel>
+              <div
+                class="flex flex-col my-4 p-2 dark:bg-zinc-900 dark:border-zinc-500 border rounded shadow-lg max-w-full">
+                <h1
+                  class="mb-2 p-2 dark:bg-zinc-900 dark:border-zinc-500 border rounded shadow-lg text-3xl text-center">
+                  Featured patterns
+                </h1>
+                <div class="card-grid">
                   <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
-                    image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
-                    author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
-                </DisclosurePanel>
-              </Disclosure>
+                    image-alt="Image goes here" title="Uwu!"
+                    description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    id="" verified featured />
+                  <CoreCard
+                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                    image-alt="Image goes here" title="Uwu!"
+                    description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    id="" verified featured />
+                  <CoreCard
+                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                    image-alt="Image goes here" title="Uwu!"
+                    description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    id="" verified featured />
+                  <CoreCard
+                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                    image-alt="Image goes here" title="Uwu!"
+                    description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    id="" verified featured />
+                  <CoreCard
+                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                    image-alt="Image goes here" title="Uwu!"
+                    description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    id="" verified featured />
+                </div>
+                <hr class="mt-4 mb-2">
+                <Disclosure v-slot="{ open }">
+                  <DisclosureButton class="my-2 disclosure" :class="open ? 'disclosure-open' : ''">Popular patterns
+                  </DisclosureButton>
+                  <DisclosurePanel class="mb-2 card-grid">
+                    <CoreCard
+                      image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                      image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
+                      author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                  </DisclosurePanel>
+                </Disclosure>
 
-              <Disclosure v-slot="{ open }">
-                <DisclosureButton class="disclosure" :class="open ? 'disclosure-open mb-2' : ''">Recent patterns
-                </DisclosureButton>
-                <DisclosurePanel class="card-grid">
-                  <CoreCard
-                    image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
-                    image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
-                    author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
-                </DisclosurePanel>
-              </Disclosure>
-            </div>
-          </TabPanel>
-          <TabPanel>Mods content</TabPanel>
+                <Disclosure v-slot="{ open }">
+                  <DisclosureButton class="disclosure" :class="open ? 'disclosure-open mb-2' : ''">Recent patterns
+                  </DisclosureButton>
+                  <DisclosurePanel class="card-grid">
+                    <CoreCard
+                      image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
+                      image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
+                      author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                  </DisclosurePanel>
+                </Disclosure>
+              </div>
+            </TabPanel>
+            <TabPanel>Mods content</TabPanel>
+
+          </div>
         </TabPanels>
       </TabGroup>
     </div>
@@ -103,11 +113,26 @@ const search = async (event: Event) => {
   // @ts-ignore
   const query: string = event.target.elements[0].value;
   if (!query.length) {
-    toast.warning("Please input a query string.")
+    toast.warning('Please input a query string.')
     return;
   }
   const { data } = await $api('/search?q=' + query);
 
   console.log(data);
 }
+
+
+(async () => {
+  const { data } = await $api('/patterns/search?featured=true');
+
+console.log(data)
+
+const searchRes: IGenericSearchResponse<IPattern> = data._rawValue
+
+console.log(searchRes)
+
+for (const pattern of searchRes.hits) {
+  console.log(pattern)
+}
+})()
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col p-2 border-r-2 dark:border-zinc-700 transition-[width]"
-    :class="`${collapsed ? 'w-24' : 'w-96'}`">
+    :class="`${collapsed ? 'w-32' : 'w-96'}`">
     <h1 class="text-lg text-center">About</h1>
     <hr />
     <div class="text-sm">
