@@ -15,17 +15,19 @@ declare global {
   // pub updated_at: DateTime<Utc>,
 
   interface IPattern {
-    patternId: string,
+    pattern_id: string,
     name: string,
     description: string,
     featured: boolean,
+    verified: boolean,
     downloads: number,
     likes: number,
     dislikes: number,
     owner: IOwner,
     versions: IPatternVersion[],
-    createdAt: string,
-    updatedAt: string,
+    latest_version: string,
+    created_at: string,
+    updated_at: string,
   }
 
   // pub user_id: Uuid,
@@ -33,7 +35,7 @@ declare global {
   // pub displayname: Option<String>,
 
   interface IOwner {
-    userId: string,
+    user_id: string,
     username: string,
     displayname?: string
   }
@@ -48,8 +50,8 @@ declare global {
     version: string,
     downloads: number,
     private: boolean,
-    createdAt: string,
-    updatedAt: string,
+    created_at: string,
+    updated_at: string,
   }
 
   // pub mods: Vec<Mod>,
@@ -58,7 +60,7 @@ declare global {
 
   interface IPatternModSearchResponse {
     patterns: IPattern[],
-    totalProcessingTime: number
+    total_processing_time_ms: number
   }
 
   // pub hits: Vec<T>,
@@ -66,7 +68,23 @@ declare global {
 
   interface IGenericSearchResponse<T> {
     hits: T[],
-    processingTimeMs: number,
+    processing_time_ms: number,
+  }
+
+  interface ICoreCard {
+    imageSrc: string,
+    imageAlt: string,
+    title: string,
+    description: string,
+    author: string,
+    uploaded: string,
+    likes: string,
+    dislikes: string,
+    downloads: string,
+    type: string,
+    id: string,
+    verified?: boolean,
+    featured?: boolean,
   }
 }
 

@@ -9,7 +9,10 @@ export default defineNuxtConfig({
     '@nuxt-hero-icons/solid/nuxt',
     '@nuxt-hero-icons/outline/nuxt',
   ],
-
+  runtimeConfig: {
+    CYGRIND_API_SECRET: process.env.CYGRIND_API_SECRET,
+    CYGRIND_BASE_URL: process.env.CYGRIND_BASE_URL,
+  },
   colorMode: {
     classSuffix: '',
   },

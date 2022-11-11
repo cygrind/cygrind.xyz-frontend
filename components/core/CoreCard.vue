@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="border rounded flex flex-col dark:border-zinc-500 shadow-lg bg-zinc-100 dark:bg-zinc-800 max-w-fit">
+  <div class="border rounded flex flex-col dark:border-zinc-500 shadow-lg bg-zinc-100 dark:bg-zinc-800 max-w-fit">
     <div class="relative">
       <i v-if="props.verified"
         class="absolute border-b border-r dark:border-zinc-500 -top-[1px] -left-[1px] fill-green-500 rounded-br dark:bg-zinc-900 bg-white">
@@ -31,6 +30,7 @@
     <div class="p-1 flex min-w-max flex-col">
       <div class="flex flex-row my-1">
         <button
+          @click="likePattern"
           class="p-2 mx-1 inline-flex flex-grow items-center justify-center rounded text-white bg-green-500 hover:bg-green-400">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2 fill-white" viewBox="0 0 512 512">
             <path
@@ -48,14 +48,34 @@
           {{ props.dislikes }}
         </button>
 
-        <button
-          class="p-2 mx-1 inline-flex flex-grow items-center justify-center rounded text-white bg-blue-500 hover:bg-blue-400">
+        <div class="mx-1">
+          <button class="p-2 inline-flex flex-grow items-center justify-center rounded text-white bg-blue-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2 fill-white" viewBox="0 0 512 512">
+              <path
+                d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-white" viewBox="0 0 448 512">
+              <path
+                d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z" />
+            </svg>
+          </button>
+          <!-- <button
+          class="p-2 ml-1 inline-flex flex-grow items-center justify-center rounded-l text-white bg-blue-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2 fill-white" viewBox="0 0 512 512">
             <path
               d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z" />
           </svg>
           {{ props.downloads }}
         </button>
+        <button
+          class="p-2 mr-1 inline-flex flex-grow items-center justify-center rounded-r text-white bg-blue-500 hover:bg-blue-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2 fill-white" viewBox="0 0 512 512">
+            <path
+              d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z" />
+          </svg>
+          {{ props.downloads }}
+        </button> -->
+        </div>
       </div>
     </div>
 
@@ -93,7 +113,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { useToast } from 'vue-toastification';
+
 const props = defineProps<{
   imageSrc: string,
   imageAlt: string,
@@ -110,8 +131,12 @@ const props = defineProps<{
   featured?: boolean,
 }>();
 
+const { $api_proxy } = useNuxtApp();
+let toast = useToast();
+
+
 const prettyDate = (date: Date): string => {
-  return `${date.getUTCDate()}/${date.getUTCMonth()}/${date.getUTCFullYear()} @ ${date.getUTCHours().toString().length > 1 ? date.getUTCHours() : '0' + date.getUTCHours()}:${date.getUTCMinutes().toString().length > 1 ? date.getUTCMinutes() : '0' + date.getUTCMinutes()}`;
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} @ ${date.getHours().toString().length > 1 ? date.getHours() : '0' + date.getHours()}:${date.getUTCMinutes().toString().length > 1 ? date.getMinutes() : '0' + date.getMinutes()}`;
 }
 
 const viewMod = () => {
@@ -120,5 +145,15 @@ const viewMod = () => {
 
 const viewPattern = () => {
   window.location.href = `/patterns/${props.id}`;
+}
+
+const likePattern = async () => {
+  let token = localStorage.getItem('AUTHORIZATION')
+
+  if (token === null || !token.length) {
+    toast.error('You need to be logged in to like a pattern.')
+  }
+
+  await $api_proxy(`/api/patterns/like/${props.id}`, 'POST', { 'Authorization': `Bearer ${token}` })
 }
 </script>

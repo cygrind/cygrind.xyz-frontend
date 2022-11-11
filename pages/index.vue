@@ -37,7 +37,22 @@
                   Featured patterns
                 </h1>
                 <div class="card-grid">
-                  <CoreCard
+                  <CoreCard v-for="pattern in featuredPatterns" 
+                    :image-src="pattern.imageSrc" 
+                    :image-alt="pattern.imageAlt"
+                    :title="pattern.title"
+                    :description="pattern.description.length ? pattern.description : pattern.title"
+                    :uploaded="pattern.uploaded"
+                    :author="pattern.author"
+                    :likes="pattern.likes"
+                    :dislikes="pattern.dislikes"
+                    :downloads="pattern.downloads"
+                    :id="pattern.id"
+                    :verified="pattern.verified"
+                    :featured="pattern.featured"
+                    type="pattern"
+                  />
+                  <!-- <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
@@ -66,7 +81,7 @@
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
                     uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
-                    id="" verified featured />
+                    id="" verified featured /> -->
                 </div>
                 <hr class="mt-4 mb-2">
                 <Disclosure v-slot="{ open }">
@@ -107,7 +122,7 @@ import { CoreCard } from '#components';
 import { useToast } from 'vue-toastification';
 
 let toast = useToast();
-const { $api } = useNuxtApp();
+const { $api, $consts } = useNuxtApp();
 
 const search = async (event: Event) => {
   // @ts-ignore
@@ -121,18 +136,31 @@ const search = async (event: Event) => {
   console.log(data);
 }
 
-
-(async () => {
-  const { data } = await $api('/patterns/search?featured=true');
-
-console.log(data)
+let featuredPatterns: ICoreCard[] = [];
+let { data } = await $api('/patterns/search?featured=true')
+const { API_BASE_URL } = $consts()
 
 const searchRes: IGenericSearchResponse<IPattern> = data._rawValue
 
-console.log(searchRes)
-
 for (const pattern of searchRes.hits) {
-  console.log(pattern)
+  let cardProps: ICoreCard = {
+    author: pattern.owner.username,
+    description: pattern.description.length ? pattern.description : `${pattern.name}@${pattern.latest_version}`,
+    dislikes: pattern.dislikes.toString(),
+    likes: pattern.likes.toString(),
+    downloads: pattern.downloads.toString(),
+    id: pattern.pattern_id,
+    imageAlt: pattern.pattern_id + '.png',
+    imageSrc: API_BASE_URL + `/patterns/${pattern.pattern_id}/versions/${pattern.latest_version}/image`,
+    title: pattern.name,
+    type: 'pattern',
+    uploaded: (new Date(pattern.created_at)).getTime().toString(),
+    featured: pattern.featured,
+    verified: pattern.verified,
+  }
+  
+  featuredPatterns.push(cardProps);
 }
-})()
+
+console.log(featuredPatterns)
 </script>
