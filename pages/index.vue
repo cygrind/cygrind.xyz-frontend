@@ -37,21 +37,11 @@
                   Featured patterns
                 </h1>
                 <div class="card-grid">
-                  <CoreCard v-for="pattern in featuredPatterns" 
-                    :image-src="pattern.imageSrc" 
-                    :image-alt="pattern.imageAlt"
-                    :title="pattern.title"
-                    :description="pattern.description.length ? pattern.description : pattern.title"
-                    :uploaded="pattern.uploaded"
-                    :author="pattern.author"
-                    :likes="pattern.likes"
-                    :dislikes="pattern.dislikes"
-                    :downloads="pattern.downloads"
-                    :id="pattern.id"
-                    :verified="pattern.verified"
-                    :featured="pattern.featured"
-                    type="pattern"
-                  />
+                  <CoreCard v-for="pattern in featuredPatterns" :image-src="pattern.imageSrc"
+                    :image-alt="pattern.imageAlt" :title="pattern.title" :description="pattern.description"
+                    :uploaded="pattern.uploaded" :author="pattern.author" :likes="pattern.likes"
+                    :dislikes="pattern.dislikes" :downloads="pattern.downloads" :id="pattern.id"
+                    :verified="pattern.verified" :featured="pattern.featured" type="pattern" />
                   <!-- <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
@@ -142,25 +132,27 @@ const { API_BASE_URL } = $consts()
 
 const searchRes: IGenericSearchResponse<IPattern> = data._rawValue
 
-for (const pattern of searchRes.hits) {
-  let cardProps: ICoreCard = {
-    author: pattern.owner.username,
-    description: pattern.description.length ? pattern.description : `${pattern.name}@${pattern.latest_version}`,
-    dislikes: pattern.dislikes.toString(),
-    likes: pattern.likes.toString(),
-    downloads: pattern.downloads.toString(),
-    id: pattern.pattern_id,
-    imageAlt: pattern.pattern_id + '.png',
-    imageSrc: API_BASE_URL + `/patterns/${pattern.pattern_id}/versions/${pattern.latest_version}/image`,
-    title: pattern.name,
-    type: 'pattern',
-    uploaded: (new Date(pattern.created_at)).getTime().toString(),
-    featured: pattern.featured,
-    verified: pattern.verified,
-  }
-  
-  featuredPatterns.push(cardProps);
-}
+if (searchRes) {
+  for (const pattern of searchRes?.hits) {
+    let cardProps: ICoreCard = {
+      author: pattern.owner.username,
+      description: pattern.description.length ? pattern.description : `${pattern.name}@${pattern.latest_version}`,
+      dislikes: pattern.dislikes.toString(),
+      likes: pattern.likes.toString(),
+      downloads: pattern.downloads.toString(),
+      id: pattern.pattern_id,
+      imageAlt: pattern.pattern_id + '.png',
+      imageSrc: API_BASE_URL + `/patterns/${pattern.pattern_id}/versions/${pattern.latest_version}/image`,
+      title: pattern.name,
+      type: 'pattern',
+      uploaded: (new Date(pattern.created_at)).getTime().toString(),
+      featured: pattern.featured,
+      verified: pattern.verified,
+    }
 
-console.log(featuredPatterns)
+    featuredPatterns.push(cardProps);
+  }
+} else {
+  toast.error(`Unable to load featured patterns from the API.`)
+}
 </script>

@@ -1,0 +1,14 @@
+- [ ] User account management
+    - [ ] login
+    - [ ] signup
+    - [ ] logout
+    - [ ] delete
+    - [ ] update
+- [ ] patterns and mods views
+    - [ ] admin-specific options
+- [ ] 3d patterns
+    - aaaaaaaaaaaaaaaaaaaaaaaaaaa
+- [ ] admin-specific options
+    - [ ] users (verification)
+    - [ ] mods (verification, feature)
+    - [ ] patterns (verification, feature)

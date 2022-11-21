@@ -2,8 +2,10 @@
   <div class="border-b-2 dark:border-zinc-700 p-4 flex flex-row items-center">
 
     <div class="flex items-center flex-grow gap-4">
-      <img class="max-h-12" src="/cygrind_logo_v2_128x128.png" alt="logo">
-      <h1 class="text-xl">cygrind.xyz</h1>
+      <a href="/" class="flex flex-row items-center justify-evenly">
+        <img class="max-h-12 mr-[5%]" src="/cygrind_logo_v2_128x128.png" alt="logo">
+        <h1 class="text-xl">cygrind.xyz</h1>
+      </a>
       <br class="p-3" />
       <div class="inline-flex" role="group">
         <button class="mode-toggle rounded-l-md border p-2" ref="mode-toggle" @click="toggleDarkMode">

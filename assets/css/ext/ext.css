@@ -2,5 +2,5 @@
 @import './toasts.css';
 
 .card-grid {
-    @apply grid grid-rows-1 grid-flow-col p-4 gap-4 border rounded dark:border-zinc-500 shadow-lg overflow-y-scroll max-h-[33.333333%];
+    @apply flex flex-row p-4 gap-4 border rounded dark:border-zinc-500 shadow-lg overflow-y-scroll max-h-[33.333333%] flex-shrink;
 }
