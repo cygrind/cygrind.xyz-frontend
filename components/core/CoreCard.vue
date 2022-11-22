@@ -132,6 +132,8 @@ let toast = useToast();
 
 const likes = ref(parseInt(props.likes))
 const dislikes = ref(parseInt(props.dislikes))
+const likedLocal = ref(false)
+const dislikedLocal = ref(false)
 
 const prettyDate = (date: Date): string => {
   return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} @ ${date.getHours().toString().length > 1 ? date.getHours() : '0' + date.getHours()}:${date.getUTCMinutes().toString().length > 1 ? date.getMinutes() : '0' + date.getMinutes()}`;
@@ -154,7 +156,15 @@ const like = async () => {
     toast.error('You need to be logged in to like.')
   }
 
-  likes.value += 1
+  if (!likedLocal.value) {
+    likes.value += 1
+    likedLocal.value = true
+  }
+
+  if (dislikedLocal.value) {
+    dislikes.value -= 1
+    dislikedLocal.value = false
+  }
 
   const { error } = await $api(`/${props.type}/${props.id}/like`, 'POST', { 'Authorization': `Bearer ${token}` })
 
@@ -168,8 +178,6 @@ const like = async () => {
 
     return
   }
-
-  toast.success(`Liked ${props.title}`)
 }
 
 const dislike = async () => {
@@ -179,7 +187,15 @@ const dislike = async () => {
     toast.error('You need to be logged in to dislike.')
   }
 
-  dislikes.value += 1
+  if (!dislikedLocal.value) {
+    dislikes.value += 1
+    dislikedLocal.value = true
+  }
+
+  if (likedLocal.value) {
+    likes.value -= 1
+    likedLocal.value = false
+  }
 
   const { error } = await $api(`/${props.type}/${props.id}/dislike`, 'POST', { 'Authorization': `Bearer ${token}` })
 
@@ -193,7 +209,5 @@ const dislike = async () => {
 
     return
   }
-
-  toast.success(`Disliked ${props.title}`)
 }
 </script>
