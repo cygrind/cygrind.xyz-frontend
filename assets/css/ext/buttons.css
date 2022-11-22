@@ -17,3 +17,15 @@
 .disclosure-open {
   @apply bg-zinc-100 dark:bg-zinc-800;
 }
+
+.flow {
+  @apply rounded mx-1 inline-flex flex-row items-center p-2 text-white;
+}
+
+.google-gradient {
+  background: linear-gradient(to right, #4285f4 0% 25%, #34a853 25% 50%, #fbbc05 50% 75%, #ea4335 75%);
+}
+
+.google-gradient:hover {
+  background: linear-gradient(to right, #5b96f5 0% 25%, #45a85f 25% 50%, #fac31e 50% 75%, #eb5a4d 75%);
+}

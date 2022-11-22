@@ -77,7 +77,7 @@
     <hr>
 
     <div class="m-1">
-      <div v-if="props.type === 'pattern'">
+      <div v-if="props.type === 'patterns'">
         <button @click="viewPattern"
           class="p-2 m-1 mr-0 rounded-r-none border-r-0 inline-flex items-center rounded border shadow-md hover:shadow-inner dark:border-zinc-500 dark:bg-zinc-900 hover:dark:bg-zinc-800">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:fill-white" viewBox="0 0 576 512">
@@ -94,7 +94,7 @@
           </svg>
         </button>
       </div>
-      <div v-else-if="props.type === 'mod'">
+      <div v-else-if="props.type === 'mods'">
         <button @click="viewMod"
           class="p-2 m-1 inline-flex items-center rounded border shadow-md hover:shadow-inner dark:border-zinc-500 dark:bg-zinc-900 hover:dark:bg-zinc-800">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:fill-white" viewBox="0 0 576 512">
@@ -108,7 +108,8 @@
   </div>
 </template>
 
-<script setup lang="ts">import { useToast } from 'vue-toastification';
+<script setup lang="ts">
+import { useToast } from 'vue-toastification';
 
 const props = defineProps<{
   imageSrc: string,
@@ -126,7 +127,7 @@ const props = defineProps<{
   featured?: boolean,
 }>();
 
-const { $api_proxy } = useNuxtApp();
+const { $api } = useNuxtApp();
 let toast = useToast();
 
 
@@ -143,12 +144,14 @@ const viewPattern = () => {
 }
 
 const likePattern = async () => {
-  let token = localStorage.getItem('AUTHORIZATION')
+  let token = localStorage.getItem('userToken')
 
   if (token === null || !token.length) {
     toast.error('You need to be logged in to like a pattern.')
   }
 
-  await $api_proxy(`/api/patterns/like/${props.id}`, 'POST', { 'Authorization': `Bearer ${token}` })
+  const { data, error } = await $api(`/${props.type}/${props.id}/like`, 'POST', { 'Authorization': `Bearer ${token}` })
+
+  toast.success(`Liked pattern ${props.title}`)
 }
 </script>

@@ -1,5 +1,5 @@
 - [ ] User account management
-    - [ ] login
+    - [x] login
     - [ ] signup
     - [ ] logout
     - [ ] delete

@@ -41,7 +41,7 @@
                     :image-alt="pattern.imageAlt" :title="pattern.title" :description="pattern.description"
                     :uploaded="pattern.uploaded" :author="pattern.author" :likes="pattern.likes"
                     :dislikes="pattern.dislikes" :downloads="pattern.downloads" :id="pattern.id"
-                    :verified="pattern.verified" :featured="pattern.featured" type="pattern" />
+                    :verified="pattern.verified" :featured="pattern.featured" type="patterns" />
                   <!-- <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
