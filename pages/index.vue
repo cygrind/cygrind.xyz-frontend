@@ -41,36 +41,37 @@
                     :image-alt="pattern.imageAlt" :title="pattern.title" :description="pattern.description"
                     :uploaded="pattern.uploaded" :author="pattern.author" :likes="pattern.likes"
                     :dislikes="pattern.dislikes" :downloads="pattern.downloads" :id="pattern.id"
-                    :verified="pattern.verified" :featured="pattern.featured" type="patterns" />
+                    :verified="pattern.verified" :featured="pattern.featured" :latest-version="pattern.latestVersion"
+                    type="patterns" />
                   <!-- <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="patterns"
                     id="" verified featured />
                   <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="patterns"
                     id="" verified featured />
                   <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="patterns"
                     id="" verified featured />
                   <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="patterns"
                     id="" verified featured />
                   <CoreCard
                     image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                     image-alt="Image goes here" title="Uwu!"
                     description="This is an epic description of a pattern that someone uploaded to cygrind.xyz through the cygrind api at api.cygrind.xyz"
-                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="pattern"
+                    uploaded="1653051266590" author="Kwista" likes="69" dislikes="0" downloads="420" type="patterns"
                     id="" verified featured /> -->
                 </div>
                 <hr class="mt-4 mb-2">
@@ -81,7 +82,7 @@
                     <CoreCard
                       image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                       image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
-                      author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                      author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" latest-version="" />
                   </DisclosurePanel>
                 </Disclosure>
 
@@ -92,7 +93,7 @@
                     <CoreCard
                       image-src="http://www.keystonetrust.org.uk/wp-content/uploads/2020/06/placeholder-image-1.png"
                       image-alt="Image goes here" title="Uwu!" description="uwuwuwuwu" uploaded="1653051266590"
-                      author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" />
+                      author="Kwista" likes="0" dislikes="0" downloads="0" type="pattern" id="" latest-version="" />
                   </DisclosurePanel>
                 </Disclosure>
               </div>
@@ -148,6 +149,7 @@ if (searchRes) {
       uploaded: (new Date(pattern.created_at)).getTime().toString(),
       featured: pattern.featured,
       verified: pattern.verified,
+      latestVersion: pattern.latest_version
     }
 
     featuredPatterns.push(cardProps);

@@ -85,6 +85,7 @@ declare global {
     id: string,
     verified?: boolean,
     featured?: boolean,
+    latestVersion: string,
   }
 }
 

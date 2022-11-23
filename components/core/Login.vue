@@ -100,7 +100,13 @@ const login = async (event: Event) => {
       errorVal.value = error.value
     }
 
+    if (errorVal.value.response === undefined) {
+      toast.error('The server failed to respond to this request.')
+      return
+    }
+
     toast.error(errorVal.value.response._data.message)
+    
     return
   }
 
