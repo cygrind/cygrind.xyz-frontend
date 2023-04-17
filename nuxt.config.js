@@ -1,13 +1,13 @@
-import { defineNuxtConfig } from 'nuxt'
-
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   components: true,
   buildModules: [
-    '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss',
     '@nuxt-hero-icons/solid/nuxt',
     '@nuxt-hero-icons/outline/nuxt',
+  ],
+  modules: [
+    '@nuxtjs/color-mode',
+    '@nuxtjs/tailwindcss',
   ],
   runtimeConfig: {
     CYGRIND_API_SECRET: process.env.CYGRIND_API_SECRET,
@@ -15,5 +15,6 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
+    fallback: 'dark',
   },
 });

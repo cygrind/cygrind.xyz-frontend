@@ -131,7 +131,7 @@ const props = defineProps<{
 const { $api, $consts } = useNuxtApp();
 let toast = useToast();
 
-const likes = ref(parseInt(props.likes))
+const likes = useState('likes', () => parseInt(props.likes))
 const dislikes = ref(parseInt(props.dislikes))
 const likedLocal = ref(false)
 const dislikedLocal = ref(false)
@@ -148,7 +148,7 @@ const viewPattern = () => {
   window.location.href = `/patterns/${props.id}`;
 }
 
-const errorVal = ref(null)
+const errorVal = useState('error', () => null)
 
 const like = async () => {
   let token = localStorage.getItem('userToken')
@@ -170,7 +170,7 @@ const like = async () => {
   const { error } = await $api(`/${props.type}/${props.id}/like`, 'POST', { 'Authorization': `Bearer ${token}` })
 
   if (error.value) {
-    if (error.value !== true) {
+    if (!!error.value !== true) {
       errorVal.value = error.value
     }
 

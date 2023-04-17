@@ -20,7 +20,7 @@
 
               <form @submit.prevent="login($event)" class="m-2 flex flex-col">
                 <input type="text" placeholder="username..." class="p-2 m-2 rounded bg-zinc-200 focus:bg-zinc-100 focus:dark:bg-zinc-800 dark:bg-zinc-900 ring-0 shadow-lg focus:shadow-inner border dark:border-zinc-500">
-                <input type="text" placeholder="password..." class="p-2 m-2 rounded bg-zinc-200 focus:bg-zinc-100 focus:dark:bg-zinc-800 dark:bg-zinc-900 ring-0 shadow-lg focus:shadow-inner border dark:border-zinc-500">
+                <input type="password" placeholder="password..." class="p-2 m-2 rounded bg-zinc-200 focus:bg-zinc-100 focus:dark:bg-zinc-800 dark:bg-zinc-900 ring-0 shadow-lg focus:shadow-inner border dark:border-zinc-500">
                 <button type="submit" class="shadow-lg rounded hover:shadow-inner bg-blue-500 hover:bg-blue-400 p-2 m-2 mx-[25%] inline-flex flex-row items-center">
                   <div class="text-center w-full">
                     <h3 class="text-lg text-white">Submit</h3>
@@ -64,7 +64,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import {
   Dialog,
   DialogPanel,
@@ -81,14 +80,17 @@ const toast = useToast();
 const props = defineProps<{ isOpen: boolean }>()
 const emit = defineEmits<{ (event: 'toggle-login-modal'): void }>();
 
-const errorVal = ref(null)
+const errorVal: globalThis.Ref = useState('errorVal', () => null)
+console.log(errorVal)
 
 const closeLoginModal = () => {
   emit('toggle-login-modal')
 }
 
 const login = async (event: Event) => {
+  // @ts-ignore
   const username: string = event.target.elements[0].value;
+  // @ts-ignore
   const password: string = event.target.elements[1].value;
 
   console.log(username, password)
@@ -96,11 +98,11 @@ const login = async (event: Event) => {
   const { data, error } = await $api(`/login/standard`, 'POST', {}, { username: username, password: password })
 
   if (error.value) {
-    if (error.value !== true) {
+    if (!!error.value !== true) {
       errorVal.value = error.value
     }
 
-    if (errorVal.value.response === undefined) {
+    if (errorVal.value?.response === undefined) {
       toast.error('The server failed to respond to this request.')
       return
     }

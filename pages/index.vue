@@ -4,9 +4,12 @@
       <h1 class="text-5xl text-center p-2">ULTRAKILL mods and cyber grind patterns</h1>
       <hr>
       <form @submit.prevent="search($event);" class="my-4 flex focus:ring-0">
-        <input type="text" placeholder="Search for patterns and mods..."
+        <!-- <input type="text" placeholder="Search for patterns and mods..."
+          class="p-4 flex-grow shadow-lg focus:shadow-inner focus:dark:bg-zinc-800 dark:bg-zinc-900 dark:border-zinc-500 rounded-l-md border-l border-y placeholder:text-2xl text-2xl"> -->
+        <input type="text" placeholder="Search for patterns..."
           class="p-4 flex-grow shadow-lg focus:shadow-inner focus:dark:bg-zinc-800 dark:bg-zinc-900 dark:border-zinc-500 rounded-l-md border-l border-y placeholder:text-2xl text-2xl">
-        <button type="submit"
+
+          <button type="submit"
           class="p-2 px-8 shadow-lg rounded-r-md border-r border-y dark:border-zinc-500 bg-green-500 hover:bg-green-400 hover:shadow-inner">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-white" viewBox="0 0 512 512">
             <path
